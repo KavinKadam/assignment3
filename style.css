@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  color: #f1f5f9;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: linear-gradient(to bottom, #1e1e2f, #121212);
+  color: #ddd;
+}
+
+header {
+  text-align: center;
+  padding: 1.5em 0;
+  background: linear-gradient(to right, #3b4cca, #2a2a72);
+  color: white;
+  border-bottom: 4px solid #ffcb05;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  text-shadow: 1px 1px #000;
+}
+
+.controls {
+  margin: 1em 0;
+}
+
+.controls button,
+.controls select {
+  background-color: #ffcb05;
+  color: #1e1e2f;
+  border: none;
+  padding: 0.5em 1em;
+  margin: 0 5px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.controls button:hover,
+.controls select:hover {
+  transform: scale(1.05);
+}
+
+#status span {
+  display: inline-block;
+  margin: 0 10px;
+  font-weight: bold;
+  color: #ffe600;
+  font-size: 1.1em;
+}
+
+#game_grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95%;
+  max-width: 1000px;
+  margin: 30px auto;
+  gap: 12px;
+}
+
+.card {
+  width: 110px;
+  height: 150px;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 2px solid #3b4cca;
+}
+
+.front_face,
+.back_face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+}
+
+.front_face {
+  transform: rotateY(180deg);
+}
+
+.card.flip .front_face {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.card.flip .back_face {
+  transform: rotateY(180deg);
+}
+
+#message {
+  text-align: center;
+  font-size: 1.8em;
+  margin-top: 1.5em;
+  font-weight: bold;
+  color: #facc15;
+  text-shadow: 1px 1px #000;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Memory Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="index.js"></script>
+</head>
+<body>
+<header>
+  <h1>Pokémon Memory Game</h1>
+  <div class="controls">
+    <label for="difficulty">Difficulty:</label>
+    <select id="difficulty">
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+
+    <button id="startBtn">Start</button>
+    <button id="resetBtn">Reset</button>
+    <button id="themeToggle">Toggle Theme</button>
+    <button id="powerUpBtn">Power Up</button>
+  </div>
+  <div id="status">
+    <span id="clickCount">Clicks: 0</span>
+    <span id="pairsMatched">Matched: 0</span>
+    <span id="pairsLeft">Left: 0</span>
+    <span id="timer">Time: 0s</span>
+  </div>
+</header>
+
+<main>
+  <div id="game_grid"></div>
+  <div id="message"></div>
+</main>
+</body>
+</html>
