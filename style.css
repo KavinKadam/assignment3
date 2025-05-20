@@ -113,3 +113,44 @@ header h1 {
   color: #facc15;
   text-shadow: 1px 1px #000;
 }
+
+.video-background {
+  position: fixed;
+  top: 0; left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.video-background iframe {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+body.dark header {
+  background: linear-gradient(to right, #1a1a2e, #121212);
+  color: #eee;
+  border-bottom: 4px solid #444;
+}
+
+body.dark .controls button,
+body.dark .controls select {
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #666;
+}
+
+body.dark #status span {
+  color: #ffc107;
+}
+
+body.dark #message {
+  color: #ffde59;
+}
+
+body.dark .card img {
+  border: 2px solid #888;
+}

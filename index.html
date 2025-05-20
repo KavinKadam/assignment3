@@ -3,14 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokémon Memory Game</title>
+  <title>MatchEm Region Sprint</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="index.js"></script>
 </head>
 <body>
+<div class="video-background">
+  <iframe
+          src="https://www.youtube.com/embed/oylirMJXN08?autoplay=1&mute=1&loop=1&playlist=oylirMJXN08&controls=0&showinfo=0&rel=0"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen>
+  </iframe>
+</div>
+
 <header>
-  <h1>Pokémon Memory Game</h1>
+  <h1>MatchEm Region Sprint</h1>
   <div class="controls">
     <label for="difficulty">Difficulty:</label>
     <select id="difficulty">
@@ -19,9 +28,9 @@
       <option value="hard">Hard</option>
     </select>
 
-    <button id="startBtn">Start</button>
+    <button id="startBtn">Begin!</button>
     <button id="resetBtn">Reset</button>
-    <button id="themeToggle">Toggle Theme</button>
+    <button id="themeToggle">Toggle Night/Day</button>
     <button id="powerUpBtn">Power Up</button>
   </div>
   <div id="status">

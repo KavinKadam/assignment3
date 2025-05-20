@@ -47,8 +47,14 @@ function startGame() {
   }, 1000);
 
   const selected = getRandomPokemon(pairs);
-  const duplicated = shuffle([...selected, ...selected]);
-  renderCards(duplicated);
+  const duplicated = [];
+  selected.forEach(poke => {
+    duplicated.push({ ...poke });
+    duplicated.push({ ...poke });
+  });
+
+  const spaced = improvedShuffle(duplicated);
+  renderCards(spaced);
 }
 
 function getRandomPokemon(count) {
@@ -143,13 +149,49 @@ function resetGame() {
   [firstCard, secondCard] = [null, null];
 }
 
-function shuffle(arr) {
-  const newArr = arr.slice();
-  for (let i = newArr.length - 1; i > 0; i--) {
-    const j = i - Math.floor(Math.random() * Math.min(3, i + 1)); // reduce tight clustering
-    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+function improvedShuffle(arr) {
+  const totalSlots = arr.length;
+
+  const gridElement = document.getElementById('game_grid');
+  const cardWidth = 110;
+  const gridWidth = Math.floor(gridElement.offsetWidth / cardWidth);
+
+  const placed = new Array(totalSlots).fill(null);
+  const used = new Set();
+
+  function getXY(index) {
+    return [index % gridWidth, Math.floor(index / gridWidth)];
   }
-  return newArr;
+
+  function areVisuallyAdjacent(i1, i2) {
+    const [x1, y1] = getXY(i1);
+    const [x2, y2] = getXY(i2);
+    return Math.abs(x1 - x2) <= 1 && Math.abs(y1 - y2) <= 1;
+  }
+
+  for (let i = 0; i < arr.length; i += 2) {
+    const pair = arr[i];
+
+    let idx1;
+    do {
+      idx1 = Math.floor(Math.random() * totalSlots);
+    } while (used.has(idx1));
+    placed[idx1] = pair;
+    used.add(idx1);
+
+    let idx2, attempts = 0;
+    do {
+      idx2 = Math.floor(Math.random() * totalSlots);
+      attempts++;
+    } while (
+        used.has(idx2) ||
+        (areVisuallyAdjacent(idx1, idx2) && attempts < 100)
+        );
+    placed[idx2] = pair;
+    used.add(idx2);
+  }
+
+  return placed;
 }
 
 function triggerPowerUp() {
